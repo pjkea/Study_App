@@ -1,0 +1,29 @@
+#:kivy 1.0.9
+#:include dashboard.kv
+
+<LoginPage>:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 10
+
+    Label:
+        text: 'Username:'
+
+    TextInput:
+        id: username_input
+        multiline: False
+
+    Label:
+        text: 'Password:'
+
+    TextInput:
+        id: password_input
+        multiline: False
+        password: True
+
+    Button:
+        text: 'Login'
+        background_color: (0, 0, 1, 1)
+        size_hint_y: None
+        height: 40
+        on_press: root.check_credentials()

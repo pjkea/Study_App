@@ -1,0 +1,56 @@
+#:kivy 1.10.0
+#:include dashboard.kv
+
+<SignUpPage>:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 10
+
+    Label:
+        text: 'Sign Up Page'
+
+    Label:
+        text: 'Username:'
+
+    TextInput:
+        id: username_input
+        hint_text: 'Enter your username'
+        size_hint_y: None
+        height: 40
+
+    Label:
+        text: 'Password:'
+
+    TextInput:
+        id: password_input
+        hint_text: 'Enter your password'
+        password: True
+        size_hint_y: None
+        height: 40
+
+    Label:
+        text: 'Year:'
+
+    Spinner:
+        id: year_input
+        text: 'Select your year'
+        values: ['First Year', 'Second Year', 'Third Year', 'Fourth Year']
+        size_hint_y: None
+        height: 40
+
+    Label:
+        text: 'Course:'
+
+    TextInput:
+        id: course_input
+        hint_text: 'Enter your course'
+        size_hint_y: None
+        height: 40
+
+    Button:
+        text: 'Sign Up'
+        background_color: (0, 0, 1, 1)
+        size_hint_y: None
+        height: 40
+        on_press:
+            root.sign_up(username_input.text, password_input.text, year_input.text, course_input.text)

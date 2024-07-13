@@ -1,0 +1,43 @@
+# noteapp.kv
+
+ScreenManager:
+    id: screen_manager
+    NotePage:
+        id: note
+        name: 'note'
+    NoteListPage:
+        id: note_list
+        name: 'note_list'
+
+<NotePage>:
+    orientation: 'vertical'
+    note_text_input: note_text_input
+    NoteTextInput:
+        id: note_text_input
+        hint_text: 'Enter your note here'
+    Button:
+        text: 'Save Note'
+        size_hint_y: 0.2
+        on_press: root.save_note(self)
+    Button:
+        text: 'Open Notes'
+        size_hint_y: 0.2
+        on_press: app.root.current = 'note_list'
+
+<NoteListPage>:
+    orientation: 'vertical'
+    note_text_input: note_text_input
+    TextInput:
+        id: note_text_input
+        hint_text: 'View or select a note'
+        size_hint_y: 0.8
+    ScrollView:
+        GridLayout:
+            id: note_list
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+    Button:
+        text: 'Back'
+        size_hint_y: 0.2
+        on_press: app.root.current = 'note'

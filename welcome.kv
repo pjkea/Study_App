@@ -1,0 +1,50 @@
+#:kivy 1.10.0
+#:include signup.kv
+#:include login.kv
+#:include dashboard.kv
+#:include noteapp.kv
+
+<ScreenManagement>:
+    WelcomeScreen:
+        name: 'welcome'
+    SignUpPage:
+        name: 'signup'
+    LoginPage:
+        name: 'login'
+    DashboardScreen:
+        name: 'dashboard'
+    NotePage:
+        name: 'note'
+    NoteListPage:
+        name: 'note_list'
+
+<WelcomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+
+        Label:
+            text: 'Welcome to [App Name]'
+            font_size: 24
+            color: (0, 0, 0, 1)
+
+        Button:
+            text: 'Sign Up'
+            background_color: (0, 0.7, 0, 1)
+            color: (1, 1, 1, 1)
+            font_size: 18
+            on_press:
+                root.manager.current = 'signup'
+
+        Button:
+            text: 'Login'
+            background_color: (0, 0.4, 0.8, 1)
+            color: (1, 1, 1, 1)
+            font_size: 18
+            on_press:
+                root.manager.current = 'login'
+
+        Widget:
+            size_hint_y: 0.6
+

@@ -1,38 +1,53 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.popup import Popup
 from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
+from kivy.uix.screenmanager import ScreenManager, Screen
+import mysql.connector
 
 
-class LoginPage(BoxLayout):
-    def __init__(self, **kwargs):
-        super(LoginPage, self).__init__(**kwargs)
-        self.orientation = 'vertical'
-        self.padding = 20
-        self.spacing = 10
+class LoginPage(BoxLayout, Screen):
+    def check_credentials(self):
+        username = self.ids.username_input.text
+        password = self.ids.password_input.text
 
-        # Create labels and input fields
-        self.username_label = Label(text='Username:')
-        self.username_input = TextInput(multiline=False)
-        self.add_widget(self.username_label)
-        self.add_widget(self.username_input)
+        # Connect to the MySQL database
+        db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="study_appdb"
+        )
+        cursor = db.cursor()
 
-        self.password_label = Label(text='Password:')
-        self.password_input = TextInput(multiline=False, password=True)
-        self.add_widget(self.password_label)
-        self.add_widget(self.password_input)
+        cursor.execute("SELECT * FROM users WHERE username=%s AND password=%s", (username, password))
+        row = cursor.fetchone()
 
-        # Create login button
-        self.login_button = Button(text='Login', background_color=(0, 0, 1, 1))
-        self.login_button.size_hint_y = None
-        self.login_button.height = 40
-        self.add_widget(self.login_button)
+        if row:
+            self.manager.current = 'dashboard'
+        else:
+            popup = Popup(title='Invalid Credentials', content=Label(text='Invalid username or password'),
+                          size_hint=(None, None), size=(200, 100))
+            popup.open()
+
+        db.close()
+
+
+class DashboardScreen(Screen):
+    pass
+
+
+class ScreenManagement(ScreenManager):
+    pass
 
 
 class LoginApp(App):
     def build(self):
-        return LoginPage()
+        sm = ScreenManagement()
+        sm.add_widget(LoginPage(name='login'))
+        sm.add_widget(DashboardScreen(name='dashboard'))
+        return sm
 
 
 if __name__ == '__main__':

@@ -1,0 +1,48 @@
+#:kivy 1.10.0
+#:include noteapp.kv
+
+<DashboardScreen>:
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+
+        Label:
+            text: 'Dashboard'
+            font_size: 30
+            font_name: 'arial'
+            bold: True
+            color: (0, 0, 0, 1)
+
+        Button:
+            id: file_manager_button
+            text: 'Open File Manager'
+            font_size: 20
+            background_color: (0, 1, 0, 1)
+            color: (1, 1, 1, 1)
+
+        Button:
+            id: ai_chat_button
+            text: 'Open AI Chat'
+            font_size: 20
+            background_color: (0, 0, 1, 1)
+            color: (1, 1, 1, 1)
+
+        Button:
+            id: timetable_button
+            text: 'Generate Timetable'
+            font_size: 20
+            background_color: (1, 0, 0, 1)
+            color: (1, 1, 1, 1)
+
+        Button:
+            id: notes_button
+            text: 'Take Notes'
+            font_size: 20
+            background_color: (0, 1, 1, 1)
+            color: (1, 1, 1, 1)
+            on_press: app.root.current = 'note'
+
+        Widget:
+            size_hint_y: 0.5
