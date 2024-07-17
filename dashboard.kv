@@ -1,5 +1,8 @@
 #:kivy 1.10.0
 #:include noteapp.kv
+#:include files.kv
+#:include timetable.kv
+#:include aichat.kv
 
 <DashboardScreen>:
 
@@ -21,6 +24,7 @@
             font_size: 20
             background_color: (0, 1, 0, 1)
             color: (1, 1, 1, 1)
+            on_press: app.root.current = 'files'
 
         Button:
             id: ai_chat_button
@@ -28,6 +32,7 @@
             font_size: 20
             background_color: (0, 0, 1, 1)
             color: (1, 1, 1, 1)
+            on_press: app.root.current = 'aichat'
 
         Button:
             id: timetable_button
@@ -35,6 +40,7 @@
             font_size: 20
             background_color: (1, 0, 0, 1)
             color: (1, 1, 1, 1)
+            on_press: app.root.current = 'timetable'
 
         Button:
             id: notes_button
@@ -42,7 +48,7 @@
             font_size: 20
             background_color: (0, 1, 1, 1)
             color: (1, 1, 1, 1)
-            on_press: app.root.current = 'note'
+            on_press: app.root.current = 'notes'
 
         Widget:
             size_hint_y: 0.5

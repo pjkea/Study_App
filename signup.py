@@ -1,7 +1,12 @@
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.screenmanager import ScreenManager, Screen
-import mysql.connector
+from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.app import App
+from dashboard import DashboardScreen
+import mysql.connector
+
+
+class DashboardScreen(Screen):
+    pass
 
 
 class SignUpPage(BoxLayout, Screen):
@@ -38,7 +43,10 @@ class SignUpPage(BoxLayout, Screen):
 
 class SignUpApp(App):
     def build(self):
-        return SignUpPage()
+        sm = ScreenManager()
+        sm.add_widget(SignUpPage(name='signup'))
+        sm.add_widget(DashboardScreen(name='dashboard'))
+        return sm
 
 
 if __name__ == '__main__':

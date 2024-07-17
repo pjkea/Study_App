@@ -1,0 +1,20 @@
+# files.kv
+
+<FileManagerScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label:
+            id: selected_file_label
+            text: 'No file selected'
+            size_hint: 1, None
+            height: 40
+
+        Button:
+            text: 'Open File Manager'
+            size_hint: 1, None
+            height: 40
+            on_press: root.open_file_manager()
+

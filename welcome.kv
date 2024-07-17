@@ -3,6 +3,9 @@
 #:include login.kv
 #:include dashboard.kv
 #:include noteapp.kv
+#:include aichat.kv
+#:include files.kv
+#:include timetable.kv
 
 <ScreenManagement>:
     WelcomeScreen:
@@ -13,10 +16,14 @@
         name: 'login'
     DashboardScreen:
         name: 'dashboard'
-    NotePage:
-        name: 'note'
     NoteListPage:
         name: 'note_list'
+    NotePage:
+        name: 'notes'
+    FileManagerScreen:
+        name: 'files'
+    TimeTableScreen:
+        name: 'timetable'
 
 <WelcomeScreen>:
     BoxLayout:

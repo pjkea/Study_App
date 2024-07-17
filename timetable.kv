@@ -1,0 +1,26 @@
+<TimetableScreen>:
+    cols: 2
+
+    Label:
+        text: 'Upload Timetable'
+    Button:
+        text: 'Browse'
+        on_press: root.upload_timetable(self)
+
+    Label:
+        text: 'File Path'
+    Label:
+        id: file_path_label
+        text: ''
+
+    Label:
+        text: 'Generate Personal Timetable'
+    Button:
+        text: 'Generate Personal Timetable'
+        on_press: root.generate_personal_timetable(self)
+
+    Label:
+        text: 'Personal Timetable'
+    TextInput:
+        id: timetable_display
+        readonly: True

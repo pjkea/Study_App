@@ -38,13 +38,9 @@ class DashboardScreen(Screen):
     pass
 
 
-class ScreenManagement(ScreenManager):
-    pass
-
-
 class LoginApp(App):
     def build(self):
-        sm = ScreenManagement()
+        sm = ScreenManager()
         sm.add_widget(LoginPage(name='login'))
         sm.add_widget(DashboardScreen(name='dashboard'))
         return sm
