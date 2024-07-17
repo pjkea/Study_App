@@ -1,0 +1,40 @@
+<AiChatScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        BoxLayout:
+            size_hint_y: None
+            height: 40
+            Button:
+                text: 'New Chat'
+                on_press: root.new_chat()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 40
+            TextInput:
+                id: input_area
+                hint_text: 'Type your question here...'
+            Button:
+                text: 'Ask'
+                on_press: root.ask_question()
+
+        ScrollView:
+            id: response_area
+            BoxLayout:
+                id: response_layout
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+
+        ScrollView:
+            id: history_scroll
+            size_hint_y: None
+            height: 200
+            BoxLayout:
+                id: history_list_layout
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
